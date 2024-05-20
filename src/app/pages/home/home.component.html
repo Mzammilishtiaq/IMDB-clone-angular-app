@@ -1,0 +1,12 @@
+<app-banner/>
+<div class="movie__list">
+    <h1>Now Playing Movie</h1>
+    <app-card *ngFor="let movie of movies" let i = index [ngClass]="{'active': i === 0}" [movie]="movie"/>
+    <nav aria-label="..." class="mt-5">
+        <ul class="pagination pagination-lg">
+          <li class="page-item active" aria-current="page">
+            <span class="page-link">1</span>
+          </li>
+        </ul>
+      </nav>
+</div>

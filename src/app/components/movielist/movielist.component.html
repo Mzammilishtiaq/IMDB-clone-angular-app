@@ -1,0 +1,6 @@
+<div class="movie__list">
+    <h2 class="list__title">{{type ? type : "POPULAR"}}</h2>
+    <div class="list__cards">
+        <app-card *ngFor="let movie of movies" [movie]="movie" />
+    </div>
+</div>

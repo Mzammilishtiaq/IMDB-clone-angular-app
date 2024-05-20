@@ -1,0 +1,56 @@
+<div class="movie">
+    <div class="movie__intro">
+      <img class="movie__backdrop" [src]="'https://image.tmdb.org/t/p/original' + (currentMovieDetail?.backdrop_path || '')" />
+    </div>
+    <div class="movie__detail">
+      <div class="movie__detailLeft">
+        <div class="movie__posterBox">
+          <img class="movie__poster" [src]="'https://image.tmdb.org/t/p/original' + (currentMovieDetail?.poster_path || '')" />
+        </div>
+      </div>
+      <div class="movie__detailRight">
+        <div class="movie__detailRightTop">
+          <div class="movie__name">{{ currentMovieDetail?.original_title }}</div>
+          <div class="movie__tagline">{{ currentMovieDetail?.tagline }}</div>
+          <div class="movie__rating">
+            {{ currentMovieDetail?.vote_average }} <i class="fas fa-star"></i>
+            <span class="movie__voteCount">{{ currentMovieDetail ? '(' + currentMovieDetail.vote_count + ') votes' : '' }}</span>
+          </div>
+          <div class="movie__runtime">{{ currentMovieDetail?.runtime + ' mins' }}</div>
+          <div class="movie__releaseDate">{{ currentMovieDetail ? 'Release date: ' + currentMovieDetail.release_date : '' }}</div>
+          <div class="movie__genres">
+            <ng-container *ngIf="currentMovieDetail?.genres">
+              <span *ngFor="let genre of currentMovieDetail.genres" class="movie__genre" [attr.id]="genre.id">{{ genre.name }}</span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="movie__detailRightBottom">
+          <div class="synopsisText">Synopsis</div>
+          <div>{{ currentMovieDetail?.overview }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="movie__links">
+      <div class="movie__heading">Useful Links</div>
+      <ng-container *ngIf="currentMovieDetail?.homepage">
+        <a [href]="currentMovieDetail.homepage" target="_blank" style="text-decoration: none;">
+          <p><span class="movie__homeButton movie__Button">Homepage <i class="newTab fas fa-external-link-alt"></i></span></p>
+        </a>
+      </ng-container>
+      <ng-container *ngIf="currentMovieDetail?.imdb_id">
+        <a [href]="'https://www.imdb.com/title/' + currentMovieDetail.imdb_id" target="_blank" style="text-decoration: none;">
+          <p><span class="movie__imdbButton movie__Button">IMDb <i class="newTab fas fa-external-link-alt"></i></span></p>
+        </a>
+      </ng-container>
+    </div>
+    <!-- <div class="movie__heading">Production companies</div>
+    <div class="movie__production">
+      <ng-container *ngIf="currentMovieDetail?.production_companies">
+        <span *ngFor="let company of currentMovieDetail.production_companies" class="productionCompanyImage" *ngIf="company.logo_path">
+          <img class="movie__productionCompany" [src]="'https://image.tmdb.org/t/p/original' + company.logo_path" />
+          <span>{{ company.name }}</span>
+        </span>
+      </ng-container>
+    </div> -->
+  </div>
+  
